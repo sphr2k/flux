@@ -1,0 +1,27 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  annotations:
+    metadata.weave.works/description: Kluctl Helm Repository
+  labels:
+    app.kubernetes.io/name: flux-kluctl-controller
+  name: kluctl
+  namespace: flux-system
+spec:
+  interval: 1h0m0s
+  url: https://kluctl.github.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flux-kluctl-controller
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: flux-kluctl-controller
+      sourceRef:
+        kind: HelmRepository
+        name: kluctl
+  interval: 1h0m0s
