@@ -8,18 +8,3 @@ spec:
   url: https://github.com/kluctl/kluctl-examples.git
   ref:
     branch: main
----
-apiVersion: flux.kluctl.io/v1alpha1
-kind: KluctlDeployment
-metadata:
-  name: microservices-demo-prod
-  namespace: flux-system
-spec:
-  interval: 5m
-  path: "./microservices-demo/3-templating-and-multi-env/"
-  sourceRef:
-    kind: GitRepository
-    name: microservices-demo
-  timeout: 2m
-  target: prod
-  prune: true
