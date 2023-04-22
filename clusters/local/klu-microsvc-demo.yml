@@ -14,6 +14,7 @@ apiVersion: flux.kluctl.io/v1alpha1
 kind: KluctlDeployment
 metadata:
   name: microservices-demo-test
+  namespace: flux-system
 spec:
   interval: 5m
   path: "./microservices-demo/3-templating-and-multi-env/"
